@@ -35,6 +35,7 @@ $price=ProductSize::select('price')->where('product_id','=',$request->pid)->wher
 return response($price);
 	}
     public function create(){
+
 $color=Color::all();
 $product=Product::all();
 $size=Size::all();
@@ -49,6 +50,7 @@ $cus->cphone=$request->cphone;
 $cus->date=$request->date;
 $cus->advance=$request->advance;
 $cus->rnumber=$request->rnumber;
+$cus->grandtotal=$request->grandtotal;
 $token=Token::where('status','=',Null)->first();
 //dd($token);
 if($token==null){
@@ -80,10 +82,12 @@ $serialid=$this->serial;
 //dd($request->pcolor[$key]);
 
 $data=array(
-		'pname'=>$request->pname [$key],
+		'product_id'=>$request->pname [$key],
 		'pquantity'=>$request->pquantity [$key],
-		'psize'=>$request->psize [$key],
+		'size_id'=>$request->psize [$key],
 'color_id'=>$request->pcolor [$key],
+'price'=>$request->price [$key],
+'total'=>$request->total [$key],
 'customer_id'=>$id,
 'serial_id'=>$serialid
 

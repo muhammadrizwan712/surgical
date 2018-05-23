@@ -15,9 +15,11 @@ class CreateStocksTable extends Migration
     {
         Schema::create('stocks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('pname');
+            $table->integer('product_id')->unsigned();
+            $table->integer('size_id')->unsigned();
+
             $table->string('pquantity');
-            $table->string('psize');
+          
            $table->integer('price');
            $table->integer('total');
           
@@ -35,6 +37,12 @@ $table->foreign('serial_id')->references('id')->on('serials')
 
 $table->foreign('customer_id')->references('id')->on('customers')
                 ->onUpdate('cascade')->onDelete('cascade');
+
+$table->foreign('product_id')->references('id')->on('products')
+                ->onUpdate('cascade')->onDelete('cascade');
+                $table->foreign('size_id')->references('id')->on('sizes')
+                ->onUpdate('cascade')->onDelete('cascade');
+
 
 
 

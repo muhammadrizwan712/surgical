@@ -56,8 +56,19 @@ input[type=date] {
 
 							
 		</div>
-		<div class="col-md-12">
+		<div class="col-md-3">
 								<input type="text" name="advance"  placeholder="enter Advance">
+									
+								</div>
+								<div class="col-md-3" style="margin-top: 20px">
+								<select  class="form-control">
+									<option>
+										Sale Cash
+									</option>
+									<option>
+										Sale Credit
+									</option>
+								</select>
 									
 								</div>
 	</div>
@@ -94,6 +105,7 @@ input[type=date] {
 					</td>
 					<td>
 <select class="form-control psize" name="psize[]" > 
+									<option value="0" selected="true" disabled="true">Select Size</option>
 									@foreach($size as $p)
 									<option value="{{$p->id}}">
 										{{$p->name}}
@@ -124,12 +136,14 @@ input[type=date] {
 			</tbody>
 			<tfoot>
 				<tr>
+					<td style="border: none"><button class="btn btn-primary">Save</button></td>
 					<td style="border: none"></td>
 					<td style="border: none"></td>
 					<td style="border: none"></td>
 					<td style="border: none"></td>
-					<td style="border: none"></td>
-					<td >Grand Total Amount:<p class="grandtotal"></p></td>
+					
+
+					<td >Grand Total Amount:<input readonly="true" type="text" name="grandtotal" class="form-control" id="grandtotal" name="grandtotal"></td>
 				</tr>
 			</tfoot>
 		</table>
@@ -164,7 +178,9 @@ var tr='<tr>'+
 '					</td>'+
 '					<td>'+
 '<select class="form-control psize" name="psize[]" > '+
+'<option value="0" selected="true" disabled="true">Select Size</option>'+
 '									@foreach($size as $p)'+
+
 '									<option value="{{$p->id}}">'+
 '										{{$p->name}}'+
 '									</option>'+
@@ -208,7 +224,7 @@ var grand=$(this).val()-0;
 total+=grand;
 
 });
-$('.grandtotal').html(total);
+$('#grandtotal').val(total);
 }
 
 
@@ -253,7 +269,7 @@ var grand=$(this).val()-0;
 total+=grand;
 
 });
-$('.grandtotal').html(total);
+$('#grandtotal').val(total);
 
 });
 
