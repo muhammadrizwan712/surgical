@@ -21,7 +21,7 @@ input[type=text] {
         
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title" style="text-align: center">Edit Compnay</h4>
+        <h4 class="modal-title" style="text-align: center">Edit Serial</h4>
       </div>
       <div class="modal-body" width="30px" >
        <textarea id="body" name="body" class="form-control" placeholder="your report must be solid"></textarea>
@@ -46,7 +46,7 @@ input[type=text] {
 <div class="col-md-12">
 	
 	<div class="col-md-3" style="margin-top: 10px">
-		<input type="text" name="name" required="true" placeholder="Enter Serial Name">
+		<input type="text" name="name" required="true" placeholder="Enter Location Name">
 	</div>
     <div class="col-md-3" style="margin-top:30px">
     <select class="form-control" name="colorid">
@@ -70,7 +70,7 @@ input[type=text] {
 		  <div style="background-color: white">
     <br><br>
   
-  <h2 style="text-align: center;color:  blue">SERIAL SETTING</h2>
+  <h2 style="text-align: center;color:  blue">LOCATION SETTING</h2>
 
 
 <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">

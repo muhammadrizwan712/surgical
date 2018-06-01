@@ -180,9 +180,11 @@ input[type=text] {
         <thead>
           <tr  style="background-color:#06d995;color: white">
             <th class="service">Id</th>
-            <th class="service">Product</th>
+            <th class="service">Item Name</th>
             <th class="desc">Quantity</th>
             <th class="desc">Size</th>
+            <th class="desc">Price</th>
+            <th class="desc">Total</th>
           
            
           </tr>
@@ -192,9 +194,11 @@ input[type=text] {
          @foreach($store as $in)
           <tr>
            <td class="service">{{$in->id}}</td>
-           <td class="service">{{$in->pname}}</td>
+           <td class="service">{{$in->product->name}}</td>
             <td class="desc">{{$in->pquantity}}</td>
-            <td class="desc">{{$in->psize}}</td>
+            <td class="desc">{{$in->size->name}}</td>
+            <td class="desc">{{$in->price}}</td>
+            <td class="desc">{{$in->total}}</td>
            
             
           </tr>
@@ -207,7 +211,7 @@ input[type=text] {
       </table>
        <div class="row">
     	<div class="col-md-4 col-md-offset-8">
-    		Totel:<input type="text" name=""><br>
+    		Totel:<input type="text" name="" value="{{$customer->grandtotal}}"><br>
          Disc:<input type="text" name=""><br>
          <button class="btn btn-primary">Reciept</button>
     	</div>

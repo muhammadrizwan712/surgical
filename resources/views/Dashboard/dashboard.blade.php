@@ -178,7 +178,22 @@
                         @endif
                    
                         @if(Auth::User()->hasrole('admin'))
-                          
+                           <li>
+                            <a href="#"><i class="fa fa-laptop nav_icon"></i>Product Price<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('get.product')}}">Add Items</a>
+                                </li>
+                               <li>
+                                    <a href="{{route('get.size')}}">Add Size</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('get.product.price')}}">Set Price</a>
+                                </li>
+                               
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
                          <li>
                             <a href="#"><i class="fa fa-laptop nav_icon"></i>Stocks<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -216,10 +231,21 @@
                         </li>
 
 <li>
-                            <a href="#"><i class="fa fa-laptop nav_icon"></i>Serial <span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-laptop nav_icon"></i>Location <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{route('create.serial')}}">Serial Management</a>
+                                    <a href="{{route('create.serial')}}">Location Management</a>
+                                </li>
+                               
+                               
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li> 
+                        <li>
+                            <a href="#"><i class="fa fa-laptop nav_icon"></i>Payment Managment <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="">Due List</a>
                                 </li>
                                
                                

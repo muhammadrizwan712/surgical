@@ -61,3 +61,22 @@ Route::post('post/store/invoice/','InvoiceController@postStore')->name('poststor
 //get price for stock entry
 
 Route::get('get/price','StockController@getPrice')->name('get.price');
+//add items using price controller.
+Route::get('/get/product','PriceController@getProduct')->name('get.product');
+Route::post('/post/product','PriceController@postProduct')->name('store.product');
+Route::post('/edit/product','PriceController@edit')->name('edit.product');
+Route::get('/del/product/{id}','PriceController@delete')->name('delete.product');
+
+
+
+//add size
+Route::get('/get/size','SizeController@getSize')->name('get.size');
+Route::post('/post/size','SizeController@postSize')->name('store.size');
+Route::post('/edit/size','SizeController@edit')->name('edit.size');
+Route::get('/del/size/{id}','SizeController@delete')->name('delete.size');
+//setting price using price contoller
+Route::get('/get/product/price','PriceController@getProductPrice')->name('get.product.price');
+Route::post('/post/product/price','PriceController@postProductPrice')->name('post.product.price');
+Route::get('/delete/product/price/{id}','PriceController@deleteProductPrice')->name('delete.product.price');
+Route::post('/edit/product/prices','PriceController@editProductPrice')->name('edit.product.price');
+

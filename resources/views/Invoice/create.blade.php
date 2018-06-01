@@ -26,38 +26,28 @@
 			  <h1>
 			    <a href="">
 			    <!--   <img src="logo.png"> -->
-			      {{$customer->cname}}
+			      Customer Name:<p style="color: black">{{$customer->cname}}</p>
 			    </a>
 			  </h1>
 			</div>
 			<div class="col-xs-6 text-right">
-			  <h1>INVOICE</h1>
-			  <h1><small>Invoice #{{$customer->id}}</small></h1>
+			  <h1>COATING INVOICE</h1>
+			  <h1><small> Invoice #{{$customer->id}}</small></h1>
 			</div>
 		</div>
 
 		  <div class="row">
-		    <div class="col-xs-5">
+		   
+		    <div class="col-xs-10 col-xs-offset-2 text-right">
 		      <div class="panel panel-default">
 		              <div class="panel-heading">
-		                <h4>From: Main Instruments<a href="#"></a></h4>
+		              <center>  <h4>Customer Name : <a href="#"> {{$customer->cname}}</a></h4></center>
 		              </div>
 		              <div class="panel-body">
+		               <center>
 		                <p>
-		                  Phone #0334.... <br>
-		                </p>
-		              </div>
-		            </div>
-		    </div>
-		    <div class="col-xs-5 col-xs-offset-2 text-right">
-		      <div class="panel panel-default">
-		              <div class="panel-heading">
-		                <h4>To : <a href="#"> {{$customer->cname}}</a></h4>
-		              </div>
-		              <div class="panel-body">
-		                <p>
-		               Phone# {{$customer->cphone}} <br>
-		                </p>
+		              Customer Phone# {{$customer->cphone}} <br>
+		                </p></center>
 		              </div>
 		            </div>
 		    </div>
@@ -67,9 +57,12 @@
         <thead>
           <tr>
             <th><h4>id</h4></th>
-            <th><h4>product</h4></th>
+            <th><h4>Item Name</h4></th>
             <th><h4>quantity</h4></th>
             <th><h4>size</h4></th>
+            <th><h4>price</h4></th>
+            <th><h4>total</h4></th>
+
           
           </tr>
         </thead>
@@ -78,9 +71,11 @@
          @foreach($store as $in)
           <tr>
            <td class="service">{{$in->id}}</td>
-           <td class="service">{{$in->pname}}</td>
+           <td class="service">{{$in->product->name}}</td>
             <td class="desc">{{$in->pquantity}}</td>
-            <td class="desc">{{$in->psize}}</td>
+            <td class="desc">{{$in->size->name}}</td>
+            <td class="desc">{{$in->price}}</td>
+            <td class="desc">{{$in->total}}</td>
            
             
           </tr>
@@ -96,16 +91,16 @@
 				<p>
 					<strong>
 						Sub Total : <br>
-						TAX : <br>
+						TAX :<br>
 						Total : <br>
 					</strong>
 				</p>
 			</div>
 			<div class="col-xs-2">
 				<strong>
-					$75.00 <br>
+					{{$customer->grandtotal}}Rs <br>
 					N/A <br>
-					$75.00 <br>
+					{{$customer->grandtotal}}Rs <br>
 				</strong>
 			</div>
 		</div>
@@ -131,7 +126,7 @@
 			    </div>
 			    <div class="panel-body">
 			      <p>
-			        <p><a href="/home"><button class="btn btn-danger ">cancel</button></a></p>
+			        <p><a href="/home"><button class="btn btn-danger ">Home</button></a></p>
 			      </p>
 			     <!--  <h4>Payment should be mabe by Bank Transfer</h4> -->
 			    </div>

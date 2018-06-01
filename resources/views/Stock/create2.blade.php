@@ -32,25 +32,25 @@ input[type=date] {
 	<div class="row">
 		<div class="col-md-12">
 								<div class="col-md-12">
-									<h3 style="color: blue">#Customer</h3>
+									<h3 style="color: gold">#Customer</h3>
 								</div>
 							</div>
 		<div class="col-md-12">
 		
 								<div class="col-md-3">
-								<input type="text" name="cname"  placeholder="enter customer name" >
+								<input type="text" name="cname"  placeholder=" customer name" >
 									
 								</div>
 								<div class="col-md-3">
-								<input type="text" name="cphone" placeholder="enter customer phone">
+								<input type="text" name="cphone" placeholder=" customer phone">
 									
 								</div>
 								<div class="col-md-3" style="margin-top: 15px">
-								<input type="date" name="date" placeholder="enter product date" class="form-control">
+								<input type="date" name="date" placeholder=" item date" class="form-control">
 									
 								</div>
 								<div class="col-md-3">
-								<input type="text" name="rnumber"  placeholder="enter receipt number">
+								<input type="text" name="rnumber"  placeholder="Customer GP Number">
 									
 								</div>
 
