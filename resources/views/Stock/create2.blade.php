@@ -61,7 +61,7 @@ input[type=date] {
 									
 								</div>
 								<div class="col-md-3" style="margin-top: 20px">
-								<select  class="form-control">
+								<select  class="form-control" name="type">
 									<option>
 										Sale Cash
 									</option>

@@ -58,6 +58,12 @@ Route::post('get/coat/finish','CoatController@shiftFinish')->name('shift.finish'
 Route::get('create/invoice/{id}','InvoiceController@create')->name('create.invoice');
 Route::get('get/store/invoice/{id}','InvoiceController@getStore')->name('getstore.invoice');
 Route::post('post/store/invoice/','InvoiceController@postStore')->name('poststore.invoice');
+//generate invoices
+Route::get('get/customer/invoice','InvoiceController@getCustomerInvoice')->name('get.customer.invoice');
+Route::post('post/customer/invoice','InvoiceController@postCustomerInvoice')->name('post.customer.invoice');
+
+
+
 //get price for stock entry
 
 Route::get('get/price','StockController@getPrice')->name('get.price');

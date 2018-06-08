@@ -18,6 +18,7 @@ class CreateCustomersTable extends Migration
             $table->string('cname');
             $table->string('cphone');
             $table->string('date');
+            $table->string('type');
             $table->string('rnumber');
             $table->string('advance');
             $table->integer('grandtotal')->nullable();

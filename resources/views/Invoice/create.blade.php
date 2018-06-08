@@ -16,8 +16,10 @@
 </head>
 <body>
 	
+<div id="divide">
+	
 
-	<div class="container" id="divide">
+	<div class="container" >
 
 	
 		<div class="row">
@@ -90,22 +92,27 @@
 			<div class="col-xs-2 col-xs-offset-8">
 				<p>
 					<strong>
-						Sub Total : <br>
-						TAX :<br>
 						Total : <br>
+						Advance :<br>
+						Recieve :<br>
+						Balance : <br>
 					</strong>
 				</p>
 			</div>
 			<div class="col-xs-2">
 				<strong>
-					{{$customer->grandtotal}}Rs <br>
-					N/A <br>
-					{{$customer->grandtotal}}Rs <br>
+
+					{{$prices->total}}Rs<br>
+					{{$prices->advance}}Rs <br>
+					 {{$prices->recieve}}Rs<br>
+					{{$prices->balance}}Rs <br>
+
 				</strong>
 			</div>
 		</div>
-
-
+</div>
+</div>
+<div>
 		<div class="row">
 		  <div class="col-xs-5">
 		    <div class="panel panel-info">

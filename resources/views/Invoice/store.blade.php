@@ -210,9 +210,12 @@ input[type=text] {
         </tbody>
       </table>
        <div class="row">
-    	<div class="col-md-4 col-md-offset-8">
-    		Totel:<input type="text" name="" value="{{$customer->grandtotal}}"><br>
-         Disc:<input type="text" name=""><br>
+    	<div class="col-md-6 col-md-offset-6">
+    		Totel:<input type="text" name="total" id="total" value="{{$customer->grandtotal}}"><br>
+         Advance:<input type="text" name="advance" id="advance" value="{{$customer->advance}}"><br>
+             Recieve:<input type="text" id="recieve" name="recieve"><br>
+             
+               Balance:  <input type="text"  name="balance" id="balance"><br>
          <button class="btn btn-primary">Reciept</button>
     	</div>
     </div>
@@ -220,6 +223,21 @@ input[type=text] {
     <footer>
    
     </footer>
+<script type="text/javascript">
+  
+var total=$('#total').val();
+var advance=$('#advance').val();
+ var balance=parseInt(total)+parseInt(advance);
+ $("#recieve").keyup(function(){
+      var recieve=$('#recieve').val();
+     
+
+      $('#balance').val(balance-recieve);
+    });
+
+
+</script>
+
   </body>
     </form>
 </html>

@@ -43,11 +43,14 @@ $size=Size::all();
     	return view('Stock.create2')->withextra($this->extra)->withcolor($color)->withpname($product)->withsize($size);
     }
     public function store(Request $request){
-
+$check=Customer::where('cname',$request->cname)->first();
+if($check==null)
+{
 $cus=new Customer();
 $cus->cname=$request->cname;
 $cus->cphone=$request->cphone;
 $cus->date=$request->date;
+$cus->type=$request->type;
 $cus->advance=$request->advance;
 $cus->rnumber=$request->rnumber;
 $cus->grandtotal=$request->grandtotal;
@@ -65,7 +68,14 @@ $status=Token::where('id',$token->id)->first();
 $status->status=null;
 $status->update();
 $id=$cus->id;
-
+}
+else{
+	$id=$check->id;
+	
+	$check->advance=$check->advance+$request->advance;
+	$check->grandtotal=$check->grandtotal+$request->grandtotal;
+	$check->update();
+}
 foreach($request->pcolor as $key=>$v){
 //assign location to products
 //dd($v);

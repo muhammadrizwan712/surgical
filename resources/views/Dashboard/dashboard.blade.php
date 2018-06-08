@@ -195,6 +195,20 @@
                             <!-- /.nav-second-level -->
                         </li>
                          <li>
+                            <a href="#"><i class="fa fa-laptop nav_icon"></i>Invoice Generate<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('get.customer.invoice')}}">Customer Report</a>
+                                </li>
+                               <li>
+                                    <a href="{{route('get.size')}}">Summery Report</a>
+                                </li>
+                                
+                               
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                         <li>
                             <a href="#"><i class="fa fa-laptop nav_icon"></i>Stocks<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
