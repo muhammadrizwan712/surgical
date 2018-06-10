@@ -9,16 +9,17 @@ use App\Customer;
 class CoatController extends Controller
 {
      public function coat(){
-     	$customer=Customer::all();
+$Customer=Customer::whereNull('status_invoice')->get();
+     
 $uncoat=Stock::where('status_finish','!=',null)->get();
-return view('Coating.coated')->withcoat($uncoat)->withcustomer($customer);
+return view('Coating.coated')->withcoat($uncoat)->withcustomer($Customer);
 
 
     }
     public function unCoat(){
-     	$customer=Customer::all();
+     	$customer=Customer::whereNull('status_invoice')->get();
 
-$uncoat=Stock::whereNotNull('status_coating')->get();
+$uncoat=Stock::whereNotNull('status_coating')->whereNull('status_finish')->get();
 return view('Coating.uncoated')->withuncoat($uncoat)->withcustomer($customer);
 
 

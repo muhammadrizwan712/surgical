@@ -72,8 +72,12 @@ $id=$cus->id;
 else{
 	$id=$check->id;
 	
-	$check->advance=$check->advance+$request->advance;
-	$check->grandtotal=$check->grandtotal+$request->grandtotal;
+	//$check->advance=$check->advance+$request->advance;
+	$check->status_invoice=NULL;
+	$check->advance=$request->advance;
+	$check->date=$request->date;
+	//$check->grandtotal=$check->grandtotal+$request->grandtotal;
+	$check->grandtotal=$request->grandtotal;
 	$check->update();
 }
 foreach($request->pcolor as $key=>$v){
@@ -99,8 +103,8 @@ $data=array(
 'price'=>$request->price [$key],
 'total'=>$request->total [$key],
 'customer_id'=>$id,
-'serial_id'=>$serialid
-
+'serial_id'=>$serialid,
+'date'=>$request->date
 );
 Stock::insert($data);
 
@@ -121,7 +125,7 @@ return back();
     }
 
 public function show(){
-$customer=Customer::all();
+$customer=Customer::whereNull('status_invoice')->get();
 $stock=Stock::all();
 
 return view('Stock.show')->withstock($stock)->withcustomer($customer);

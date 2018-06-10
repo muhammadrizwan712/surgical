@@ -8,15 +8,19 @@ use App\Customer;
 class CleaningController extends Controller
 {
     public function clean(){
-$Customer=Customer::all();
+$Customer=Customer::whereNull('status_invoice')->get();
+
 $clean=Stock::where('status_coating','!=',null)->get();
 return view('Cleaning.clean')->withclean($clean)->withcustomer($Customer);
 
 
     }
     public function unClean(){
-$Customer=Customer::all();
-$unclean=Stock::whereNotNull('status_cleaning')->get();
+$Customer=Customer::whereNull('status_invoice')->get();
+
+$unclean=Stock::whereNotNull('status_cleaning')
+->whereNull('status_coating')
+->get();
 //dd($unclean);
 return view('Cleaning.unclean')->withunclean($unclean)->withcustomer($Customer);
 

@@ -192,6 +192,7 @@ input[type=text] {
         <tbody>
           @if($store!=null)
          @foreach($store as $in)
+       
           <tr>
            <td class="service">{{$in->id}}</td>
            <td class="service">{{$in->product->name}}</td>
@@ -202,7 +203,7 @@ input[type=text] {
            
             
           </tr>
-        
+     
           @endforeach
             @endif
           
@@ -216,6 +217,7 @@ input[type=text] {
              Recieve:<input type="text" id="recieve" name="recieve"><br>
              
                Balance:  <input type="text"  name="balance" id="balance"><br>
+               <input type="hidden" name="date" value="{{$customer->date}}">
          <button class="btn btn-primary">Reciept</button>
     	</div>
     </div>
@@ -227,7 +229,7 @@ input[type=text] {
   
 var total=$('#total').val();
 var advance=$('#advance').val();
- var balance=parseInt(total)+parseInt(advance);
+ var balance=parseInt(total)-parseInt(advance);
  $("#recieve").keyup(function(){
       var recieve=$('#recieve').val();
      

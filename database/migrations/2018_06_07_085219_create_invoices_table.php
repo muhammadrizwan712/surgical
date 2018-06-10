@@ -22,6 +22,7 @@ class CreateInvoicesTable extends Migration
                 $table->string('advance');
                 $table->string('recieve')->nullable();
                 $table->string('balance');
+                $table->string('date');
             $table->timestamps();
         });
     }

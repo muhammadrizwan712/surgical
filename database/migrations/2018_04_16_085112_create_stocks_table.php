@@ -22,7 +22,7 @@ class CreateStocksTable extends Migration
           
            $table->integer('price');
            $table->integer('total');
-          $table->string('date');
+        
             $table->string('status_cleaning')->nullable();
             $table->string('status_coating')->nullable();
             $table->string('status_finish')->nullable();
@@ -43,9 +43,8 @@ $table->foreign('product_id')->references('id')->on('products')
                 $table->foreign('size_id')->references('id')->on('sizes')
                 ->onUpdate('cascade')->onDelete('cascade');
 
-
-
-
+  $table->string('date');
+$table->string('status_invoice')->nullable();
 
             
 

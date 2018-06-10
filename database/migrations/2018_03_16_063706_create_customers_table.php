@@ -23,7 +23,7 @@ class CreateCustomersTable extends Migration
             $table->string('advance');
             $table->integer('grandtotal')->nullable();
             $table->integer('token_id')->unsigned();
-            
+            $table->string('status_invoice')->nullable();
             
         $table->foreign('token_id')->references('id')->on('tokens')
                 ->onUpdate('cascade')->onDelete('cascade');

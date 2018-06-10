@@ -15,7 +15,22 @@
 	</style>
 </head>
 <body>
-	
+	<div class="row">
+		  
+		  <div class="col-md-12">
+		   <div class="span7">
+			  <div class="panel panel-info">
+			    <div class="panel-heading">
+			     <button class="btn btn-primary pull-right " onclick="printContent('divide')">print</button>
+
+			     
+			      <a href="/home"><button class="btn btn-danger ">Home</button></a>
+			    </div>
+			   
+			  </div>
+			</div>
+		  </div>
+		</div>
 <div id="divide">
 	
 
@@ -112,37 +127,7 @@
 		</div>
 </div>
 </div>
-<div>
-		<div class="row">
-		  <div class="col-xs-5">
-		    <div class="panel panel-info">
-			  <div class="panel-heading">
-			    <h4>Print Preview</h4>
-			  </div>
-			  <div class="panel-body">
-			    <p><button class="btn btn-primary " onclick="printContent('divide')">print</button></p>
-			   
-			  </div>
-			</div>
-		  </div>
-		  <div class="col-xs-7">
-		   <div class="span7">
-			  <div class="panel panel-info">
-			    <div class="panel-heading">
-			      <h4>Go To Home</h4>
-			    </div>
-			    <div class="panel-body">
-			      <p>
-			        <p><a href="/home"><button class="btn btn-danger ">Home</button></a></p>
-			      </p>
-			     <!--  <h4>Payment should be mabe by Bank Transfer</h4> -->
-			    </div>
-			  </div>
-			</div>
-		  </div>
-		</div>
 
-	</div>
 
 </body>
 <script type="text/javascript">

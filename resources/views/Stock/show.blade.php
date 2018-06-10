@@ -48,7 +48,7 @@
         </tr>
 
            @foreach($stock as $cls)
-
+@if($cls->date==$orders->date)
 @if($cls->customer_id==$orders->id)
 
             <tr>
@@ -73,7 +73,7 @@
 <td><h6 style="color: green"> Shifted in coating</h6></td>
               
                @endif
-              @if($cls->status_coating==null)
+              @if($cls->status_finish==null)
 <td><h6 style="color: red"> Not finished</h6></td>
 @else
 
@@ -94,6 +94,7 @@
                </td>
               @endif
             </tr>
+            @endif
             @endif
            @endforeach
                
