@@ -64,6 +64,15 @@ input[type=text] {
     </select>
   </div>
    <div class="col-md-3" style="margin-top:30px">
+    <select class="form-control" name="colorid">
+      @foreach($color as $cls)
+      <option value="{{$cls->id}}">
+        {{$cls->name}}
+      </option>
+      @endforeach
+    </select>
+  </div>
+   <div class="col-md-3" style="margin-top:30px">
     <input type="text" name="price" placeholder="price ">
   </div>
   <div class="col-md-2" style="margin-top: 30px">
@@ -89,6 +98,7 @@ input[type=text] {
                 <th>Price</th>
                 <th>Size</th>
                 <th>Item</th>
+                <th>color</th>
                         @if(Auth::User()->hasrole('admin'))
 
                 <th>Action</th>
@@ -107,6 +117,7 @@ input[type=text] {
                 <td>{{$cls->price}}</td>
                 <td>{{$cls->size->name}}</td>
                 <td>{{$cls->product->name}}</td>
+                <td>{{$cls->color->name}}</td>
                         @if(Auth::User()->hasrole('admin'))
                
                 <td><a href="#"  class="btn btn-xs btn-primary edit"><i class="glyphicon glyphicon-edit "></i> Edit</a>

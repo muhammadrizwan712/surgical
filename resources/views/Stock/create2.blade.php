@@ -27,6 +27,7 @@ input[type=date] {
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
 
 	{{csrf_field()}}
 	<div class="row">
@@ -38,7 +39,7 @@ input[type=date] {
 		<div class="col-md-12">
 		
 								<div class="col-md-3">
-								<input type="text" name="cname"  placeholder=" customer name" >
+								<input type="text" name="cname"  placeholder=" customer name" id="searchItem" >
 									
 								</div>
 								<div class="col-md-3">
@@ -80,9 +81,10 @@ input[type=date] {
 				<tr>
 					
 					<th>Item Name</th>
+					<th>Color</th>
 					<th>Size</th>
 					<th>Quantity</th>
-					<th>Color</th>
+					
 					<th>Price</th>
 					<th>Total</th>
 					<th><a href="#" class="addrow"><i class="glyphicon glyphicon-plus"></i></a></th>
@@ -103,9 +105,16 @@ input[type=date] {
 								</select>
 						
 					</td>
+					<td><select class="form-control colorid" name="pcolor[]"> 
+									@foreach($color as $p)
+									<option value="{{$p->id}}">
+										{{$p->name}}
+									</option>
+									@endforeach
+								</select></td>
 					<td>
 <select class="form-control psize" name="psize[]" > 
-									<option value="0" selected="true" disabled="true">Select Size</option>
+									<option value="0" selected="true">Select Size</option>
 									@foreach($size as $p)
 									<option value="{{$p->id}}">
 										{{$p->name}}
@@ -115,13 +124,7 @@ input[type=date] {
 <td>
 <input type="text" name="pquantity[]" placeholder="product quantity" class="pquantity" ></td>
 
-<td><select class="form-control" name="pcolor[]"> 
-									@foreach($color as $p)
-									<option value="{{$p->id}}">
-										{{$p->name}}
-									</option>
-									@endforeach
-								</select></td>
+
 						<td>
 <input type="text" name="price[]" class="price" placeholder="product price" >
 									
@@ -176,6 +179,13 @@ var tr='<tr>'+
 '								</select>'+
 
 '					</td>'+
+'<td><select class="form-control colorid" name="pcolor[]"> '+
+'									@foreach($color as $p)'+
+'									<option value="{{$p->id}}">'+
+'										{{$p->name}}'+
+'									</option>'+
+'									@endforeach'+
+'								</select></td>'+
 '					<td>'+
 '<select class="form-control psize" name="psize[]" > '+
 '<option value="0" selected="true" disabled="true">Select Size</option>'+
@@ -189,13 +199,7 @@ var tr='<tr>'+
 '<td>'+
 '<input type="text" name="pquantity[]" placeholder="product quantity" class="pquantity" ></td>'+
 
-'<td><select class="form-control" name="pcolor[]"> '+
-'									@foreach($color as $p)'+
-'									<option value="{{$p->id}}">'+
-'										{{$p->name}}'+
-'									</option>'+
-'									@endforeach'+
-'								</select></td>'+
+
 '						<td>'+
 '<input type="text" name="price[]" class="price" placeholder="product price" >'+
 									
@@ -234,13 +238,14 @@ $('tbody').delegate('.psize','change',function(){
 var tr=$(this).parent().parent();
 var pid=tr.find('.pname').val();
 var sid=tr.find('.psize').val();
+var colorid=tr.find('.colorid').val();
 
 $.ajax({
 method:'GET',
 url:add,
 
 
-data:{pid:pid,sid:sid,_token:token},
+data:{pid:pid,colorid,sid:sid,_token:token},
 success:function(data){
 tr.find('.price').val(data.price);
 
@@ -275,8 +280,42 @@ $('#grandtotal').val(total);
 
 
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
+	
 
 
+</script>
+<script type="text/javascript">
+	$( function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $( "#searchItem" ).autocomplete({
+      source: '{{URL::to('get/customer/search')}}'
+    });
+  } );
+</script>
 
 
 @endsection

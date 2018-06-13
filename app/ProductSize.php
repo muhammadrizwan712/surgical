@@ -12,4 +12,7 @@ class ProductSize extends Model
      public  function size() {
         return $this->belongsTo('App\Size', 'size_id');
     }
+      public  function color() {
+        return $this->belongsTo('App\Color', 'color_id');
+    }
 }

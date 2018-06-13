@@ -259,7 +259,10 @@
                             <a href="#"><i class="fa fa-laptop nav_icon"></i>Payment Managment <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="">Due List</a>
+                                    <a href="{{route('due.list')}}">Due List</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('get.customer')}}">Credit Customer</a>
                                 </li>
                                
                                

@@ -86,3 +86,19 @@ Route::post('/post/product/price','PriceController@postProductPrice')->name('pos
 Route::get('/delete/product/price/{id}','PriceController@deleteProductPrice')->name('delete.product.price');
 Route::post('/edit/product/prices','PriceController@editProductPrice')->name('edit.product.price');
 
+//due list
+
+Route::get('due/customer','CustomerController@getCustomer')->name('get.customer');
+
+Route::get('all/invoices/{id}','CustomerController@allInvoice')->name('all.invoice');
+Route::get('due/it/invoices','DueController@create')->name('due.list');
+Route::get('/it/invoices/bill/{id}','DueController@recieve')->name('recieve.it');
+Route::post('post/it/invoices/bill','DueController@postRecieve')->name('post.recieve.it');
+Route::get('get/payment/detail/{id}','DueController@recieveDetail')->name('recieve.detail');
+
+
+//auto search
+
+Route::get('get/customer/search','CustomerController@search')->name('autosearch');
+
+

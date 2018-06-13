@@ -31,8 +31,11 @@ return response("order shifted to cleaning");
 	}
 	public function getPrice(Request $request){
   
-$price=ProductSize::select('price')->where('product_id','=',$request->pid)->where('size_id','=',$request->sid)->first();
+$price=ProductSize::select('price')->where('product_id','=',$request->pid)->where('size_id','=',$request->sid)->where('color_id','=',$request->colorid)->first();
+
 return response($price);
+
+
 	}
     public function create(){
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\ProductSize;
 use App\Size;
+use App\Color;
 class PriceController extends Controller
 {
    public function getProduct(){
@@ -42,7 +43,8 @@ public function getProductPrice(){
 $productSize=ProductSize::all();
 $product=Product::all();
 $size=Size::all();
-return view('Price.create')->withproductsize($productSize)->withproduct($product)->withsize($size);
+$color=Color::all();
+return view('Price.create')->withproductsize($productSize)->withproduct($product)->withsize($size)->withcolor($color);
 
 
 }
@@ -50,6 +52,7 @@ public function postProductPrice(Request $request){
 $obj=new ProductSize();
 $obj->product_id=$request->productid;
 $obj->size_id=$request->sizeid;
+$obj->color_id=$request->colorid;
 $obj->price=$request->price;
 $obj->save();
 return back();
