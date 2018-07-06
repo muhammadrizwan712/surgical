@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Token;
+use Session;
 class TokenController extends Controller
 {
    public function create(){
 
 $cm=Token::all();
+Session::flash('flash_success','token created successfully');
+
 	return view('Token.create')->withtoken($cm);
 }
 
@@ -21,6 +24,7 @@ return back();
 }
 public function delete($id){
 $cm=Token::where('id',$id)->first();
+Session::flash('flash_success','token deleted successfully');
 $cm->delete();
 return back();
 

@@ -160,20 +160,10 @@ input[type=text] {
     <header class="clearfix">
       
       <h1 style="color: lightgreen">Save Invoice</h1>
-      <div id="company" class="clearfix" style="margin-right: 40px">
-        <div  style="color: blue">Main Instruments</div>
-        <div>455 Foggy Heights,<br /> AZ 85004, US</div>
-        <div  style="color: blue">(602) 519-0450</div>
-        <div><a href="mailto:company@example.com">maininstruments@gmail.com</a></div>
+      <div class="col-md-12"> 
+        Token: {{$customer->token->name}}  Name:{{$customer->name}}
       </div>
-      <div id="project" style="margin-left: 40px">
-        <div><span style="color: blue">Token</span>{{$customer->token->name}} </div>
-        <div><span  style="color: blue">CLIENT</span> {{$customer->cname}}</div>
-        <div><span  style="color: blue">Phone</span>{{$customer->cphone}}</div>
-       
-        <div><span  style="color: blue">DATE</span> {{$customer->date}}</div>
-        
-      </div>
+     
     </header>
     <main>
       <table>
@@ -214,7 +204,8 @@ input[type=text] {
     	<div class="col-md-6 col-md-offset-6">
     		Totel:<input type="text" name="total" id="total" value="{{$customer->grandtotal}}"><br>
          Advance:<input type="text" name="advance" id="advance" value="{{$customer->advance}}"><br>
-             Recieve:<input type="text" id="recieve" name="recieve"><br>
+             Rec:<input type="text" id="recieve" name="recieve"><br>
+             Dis:<input type="text" id="discount" name="discount"><br>
              
                Balance:  <input type="text"  name="balance" id="balance"><br>
                <input type="hidden" name="date" value="{{$customer->date}}">
@@ -229,13 +220,15 @@ input[type=text] {
   
 var total=$('#total').val();
 var advance=$('#advance').val();
- var balance=parseInt(total)-parseInt(advance);
- $("#recieve").keyup(function(){
-      var recieve=$('#recieve').val();
-     
 
-      $('#balance').val(balance-recieve);
+ var balance=parseInt(total)-parseInt(advance);
+ $("#discount").keyup(function(){
+     var recieve=$('#recieve').val();
+
+      var discount=$('#discount').val();
+     $('#balance').val(balance-recieve-discount);
     });
+ 
 
 
 </script>

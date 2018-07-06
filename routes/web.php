@@ -1,3 +1,4 @@
+
 <?php
 
 /*
@@ -12,11 +13,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('Login.login');
 });
 
 Auth::routes();
-//stock
+//stock and delete customer and stock
 Route::get('/home', 'HomeController@index');
 
 Route::get('create/stock','StockController@create')->name('create.stock');
@@ -25,16 +26,28 @@ Route::post('post/stock','StockController@store')->name('post.stock');
 
 Route::get('viewstock','StockController@show')->name('view.stock');
 Route::post('shift/to/cleaning','StockController@shiftCleaning')->name('shift.cleaning');
+
+Route::get('delete/customer/{id}','StockController@delete')->name('customer.delete');
+Route::get('remove/customer/{id}','StockController@remove')->name('remove.customer');
+Route::get('delete/product/{id}','StockController@deleteProduct')->name('product.delete');
+
 //color
 
 Route::get('get/color','ColorController@create')->name('create.color');
 Route::post('post/color','ColorController@store')->name('store.color');
 Route::post('edit/color','ColorController@edit')->name('edit.color');
+Route::get('delete/color/{id}','ColorController@delete')->name('delete.color');
+
+
 //token
 
 Route::get('get/token','TokenController@create')->name('create.token');
 Route::post('post/token','TokenController@store')->name('store.token');
 Route::post('edit/token','TokenController@edit')->name('edit.token');
+Route::get('delete/token/{id}','TokenController@delete')->name('delete.token');
+
+
+
 //serial
 Route::get('serial/create','SerialController@create')->name('create.serial');
 Route::post('serial/store','SerialController@store')->name('store.serial');
@@ -53,15 +66,21 @@ Route::get('get/coated/stock','CoatController@uncoat')->name('get.uncoat');
 Route::get('get/coat/stock','CoatController@coat')->name('get.coat');
 Route::post('get/coat/finish','CoatController@shiftFinish')->name('shift.finish');
 
-//invoice
-
+//invoice and reports
+Route::get('mega/report','InvoiceController@mega')->name('mega.report');
 Route::get('create/invoice/{id}','InvoiceController@create')->name('create.invoice');
 Route::get('get/store/invoice/{id}','InvoiceController@getStore')->name('getstore.invoice');
 Route::post('post/store/invoice/','InvoiceController@postStore')->name('poststore.invoice');
 //generate invoices
 Route::get('get/customer/invoice','InvoiceController@getCustomerInvoice')->name('get.customer.invoice');
 Route::post('post/customer/invoice','InvoiceController@postCustomerInvoice')->name('post.customer.invoice');
+//customer initial reciept
+Route::get('initial/recipt/{id}','InvoiceController@print')->name('initial.print');
 
+//summery reports
+Route::get('select/summery/report','InvoiceController@selectSummery')->name('select.summery.report');
+
+Route::get('summery/report','InvoiceController@summery')->name('summery.report');
 
 
 //get price for stock entry

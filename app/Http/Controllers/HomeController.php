@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use yajra\Datatables\Datatables;
+use App\Token;
+use App\Serial;
 class HomeController extends Controller
 {
     
@@ -19,8 +21,9 @@ class HomeController extends Controller
     public function index()
     {
         
-
-        return view('Dashboard.dashboard')->withextra($this->extra);
+$token=Token::wherenull('status')->count();
+$serial=Serial::wherenull('status')->count();
+        return view('Dashboard.dashboard')->withextra($this->extra)->withtoken($token)->withrac($serial);
         
     }
     

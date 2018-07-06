@@ -1,13 +1,13 @@
 @extends('Dashboard/dashboard')
 
 @section('content')
-
+@include('message')
 <h2 style="color: green;text-align: center;"> <b>Stock List</h2>
 <table class="table table-hover" style="margin:10px">
     <thead style="background-color:white">
        
     </thead>
-<tbody>
+<tbody >
 
      @foreach($customer as $orders) 
  
@@ -21,10 +21,18 @@
        <br>
             
             </td>
+                        @if(Auth::User()->hasrole('admin'))
 
-<td> <a href="" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i> Delete</a></td>
+<td> <a href="{{route('remove.customer',$orders->id)}}" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i> Delete</a></td>
+@endif
 <td><a href="{{route('getstore.invoice',$orders->id)}}" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-wrench"></i> invoice</a>
 </td>
+  <td >
+    <a href="{{route('initial.print',$orders->id)}}" class="btn btn-xs btn-danger pull-right "><i class="glyphicon glyphicon-print"></i>Print</a>
+
+    
+</td>
+
  
        <tr>
            
@@ -62,16 +70,20 @@
              
               @if($cls->status_cleaning==null)
                <td><input type="checkbox" name="shiftcleaning" value="{{$cls->id}}"></td>
+               @elseif($cls->status_coating==null)
+               <td style="color: red">in cleaning</td>
                @else
-               <td>sent to cleaning</td>
+               <td style="color: green">Cleaned</td>
 @endif
 
               @if($cls->status_coating==null)
 <td><h6 style="color: red">Not  in coating</h6></td>
-@else
+@elseif($cls->status_finish==null)
 
-<td><h6 style="color: green"> Shifted in coating</h6></td>
-              
+<td><h6 style="color: red"> In coating</h6></td>
+   @else
+<td><h6 style="color: green">Coated</h6></td>
+
                @endif
               @if($cls->status_finish==null)
 <td><h6 style="color: red"> Not finished</h6></td>
@@ -88,7 +100,7 @@
         
       
 <td>
-                <a href="" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i> Delete</a>
+                <a href="{{route('product.delete',$cls->id)}}" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i> Delete</a>
                 
              
                </td>

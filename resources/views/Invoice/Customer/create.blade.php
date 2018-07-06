@@ -1,5 +1,6 @@
 @extends('Dashboard/dashboard')
 @section('content')
+@include('message')
 <form method="post" action="{{route('post.customer.invoice')}}">
 	
 {{csrf_field()}}

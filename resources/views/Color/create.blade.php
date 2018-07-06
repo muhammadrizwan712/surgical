@@ -1,6 +1,7 @@
 @extends('Dashboard/dashboard')
 
 @section('content')
+@include('message')
 <style> 
 input[type=text] {
    
@@ -88,7 +89,7 @@ input[type=text] {
                         @if(Auth::User()->hasrole('admin'))
                
                 <td><a href="#"  class="btn btn-xs btn-primary edit"><i class="glyphicon glyphicon-edit "></i> Edit</a>
-                <a href="" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i> Delete</a>
+                <a href="{{route('delete.color',$cls->id)}}" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i> Delete</a>
                 
                </td>
                @endif

@@ -31,12 +31,12 @@
             <tr>
            
              <th>id</th>
-               <th>Product Name</th>
-               <th>Product Quantity</th>
-               <th>Product Size</th>
+               <th>Item Name</th>
+               <th> Quantity</th>
+               <th> Size</th>
                
                <th>Color</th>
-               <th>Serial Number</th>
+               <th>Location</th>
               
 <th>Cleaning</th>
 <th> Coating</th>
@@ -56,9 +56,9 @@
 
             <tr>
                 <td>{{$cls->id}}</td>
-                <td>{{$cls->pname}}</td>
+                <td>{{$cls->product->name}}</td>
                 <td>{{$cls->pquantity}}</td>
-                <td>{{$cls->psize}}</td>
+                <td>{{$cls->size->name}}</td>
   
                 <td>{{$cls->color->name}}</td>
                 <td>{{$cls->serial->name}}</td>

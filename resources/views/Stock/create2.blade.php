@@ -1,5 +1,6 @@
 @extends('Dashboard/dashboard')
 @section('content')
+@include('message')
 <style type="text/css">
 	
 	input[type=text] {

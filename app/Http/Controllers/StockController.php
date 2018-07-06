@@ -16,7 +16,28 @@ class StockController extends Controller
 {
 	private $extra=null;
 	private $serial;
+//customer delete
+public function remove($id){
+$first=Customer::where('id',$id)->first();
+$token=Token::where('id',$first->token_id)->first();
+$token->status=null;
+$first->status_invoice=1;
+$first->update();
+$token->update();
+Session::flash('flash_success','Removed Successfully');
+return back();
+
+}
+public function deleteProduct($id){
+$first=Stock::where('id',$id)->first();
+$first->delete();
+Session::flash('flash_success','delete Successfully');
+return back();
+
+}
+
 	public function shiftCleaning(){
+
 
 
 
@@ -68,7 +89,7 @@ $cus->token_id=$token->id;
 $cus->save();
 //block token
 $status=Token::where('id',$token->id)->first();
-$status->status=null;
+$status->status=1;
 $status->update();
 $id=$cus->id;
 }
@@ -117,18 +138,22 @@ $serialall->status=1;
 $serialall->update();
 
 
-
-
-
-
 }
+
+	Session::flash('flash_success','uploaded Successfully');
+
+
+
+
+
 return back();
 
 
     }
 
 public function show(){
-$customer=Customer::whereNull('status_invoice')->get();
+$customer=Customer::Latest('created_at')->whereNull('status_invoice')->get();
+//on customer date and stock date base
 $stock=Stock::all();
 
 return view('Stock.show')->withstock($stock)->withcustomer($customer);

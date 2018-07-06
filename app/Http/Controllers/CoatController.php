@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Stock;
 use App\Serial;
@@ -30,8 +28,8 @@ return view('Coating.uncoated')->withuncoat($uncoat)->withcustomer($customer);
 $rec=Stock::where('id',$_POST['orderid'])->first();
 $rec->status_finish=1;
 
-
-$serial=Serial::where('id',1)->first();
+//pic serial id from stock table and un alote rac from serial table
+$serial=Serial::where('id',$rec->serial_id)->first();
 $serial->status=null;
 $serial->update();
 $rec->update();

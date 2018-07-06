@@ -31,9 +31,9 @@
             <tr>
            
              <th>id</th>
-               <th>Product Name</th>
-               <th>Product Quantity</th>
-               <th>Product Size</th>
+               <th>Item Name</th>
+               <th>Quantity</th>
+               <th>Size</th>
               
                
               
@@ -41,9 +41,9 @@
               
               
                <th>Color</th>
-               <th>Serial Number</th>
+               <th>Location</th>
               
-<th>Shift to Cleaning</th>
+<th>Status Cleaning</th>
 <th>Status Coating</th>
 <th>Status Finish</th>
 
@@ -64,9 +64,9 @@
 
             <tr>
                 <td>{{$cls->id}}</td>
-                <td>{{$cls->pname}}</td>
+                <td>{{$cls->product->name}}</td>
                 <td>{{$cls->pquantity}}</td>
-                <td>{{$cls->psize}}</td>
+                <td>{{$cls->product->name}}</td>
                 
                
                
@@ -78,7 +78,7 @@
             @if($cls->status_cleaning==null)
                <td><input type="checkbox" name="shiftcleaning"></td>
                @else
-               <td><h6 style="color: green">Recieved for cleaning</h6> </td>
+               <td><h6 style="color: red">In Cleaning</h6> </td>
 @endif
 
               @if($cls->status_coating==null)

@@ -57,50 +57,12 @@
                 </div>
               </div>
             </li>
-            <li class="avatar">
-              <a href="#">
-                <img src="{{asset('dashboard/images/1.png')}}" alt=""/>
-                <div>New message</div>
-                <small>1 minute ago</small>
-                <span class="label label-info">NEW</span>
-              </a>
-            </li>
-            <li class="avatar">
-              <a href="#">
-                <img src="images/2.png" alt=""/>
-                <div>New message</div>
-                <small>1 minute ago</small>
-                <span class="label label-info">NEW</span>
-              </a>
-            </li>
-            <li class="avatar">
-              <a href="#">
-                <img src="images/3.png" alt=""/>
-                <div>New message</div>
-                <small>1 minute ago</small>
-              </a>
-            </li>
-            <li class="avatar">
-              <a href="#">
-                <img src="images/4.png" alt=""/>
-                <div>New message</div>
-                <small>1 minute ago</small>
-              </a>
-            </li>
-            <li class="avatar">
-              <a href="#">
-                <img src="images/5.png" alt=""/>
-                <div>New message</div>
-                <small>1 minute ago</small>
-              </a>
-            </li>
-            <li class="avatar">
-              <a href="#">
-                <img src="images/pic1.png" alt=""/>
-                <div>New message</div>
-                <small>1 minute ago</small>
-              </a>
-            </li>
+           
+           
+           
+            
+           
+            
             <li class="dropdown-menu-footer text-center">
               <a href="#">View all messages</a>
             </li> 
@@ -138,7 +100,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="#"><i class="fa fa-dashboard fa-fw nav_icon"></i>Dashboard</a>
+                            <a href="/home"><i class="fa fa-dashboard fa-fw nav_icon"></i>Dashboard</a>
                         </li>
 
  
@@ -178,6 +140,19 @@
                         @endif
                    
                         @if(Auth::User()->hasrole('admin'))
+                         <li>
+                            <a href="#"><i class="fa fa-laptop nav_icon"></i>Stocks<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('create.stock')}}">Entry Stock</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('view.stock')}}">View Stock</a>
+                                </li>
+                               
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
                            <li>
                             <a href="#"><i class="fa fa-laptop nav_icon"></i>Product Price<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -195,32 +170,23 @@
                             <!-- /.nav-second-level -->
                         </li>
                          <li>
-                            <a href="#"><i class="fa fa-laptop nav_icon"></i>Invoice Generate<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-laptop nav_icon"></i>Report Generate<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{{route('get.customer.invoice')}}">Customer Report</a>
                                 </li>
                                <li>
-                                    <a href="{{route('get.size')}}">Summery Report</a>
+                                    <a href="{{route('select.summery.report')}}">Summery Report</a>
+                                </li>
+                                 <li>
+                                    <a href="{{route('mega.report')}}">Mega Report</a>
                                 </li>
                                 
                                
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                         <li>
-                            <a href="#"><i class="fa fa-laptop nav_icon"></i>Stocks<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{route('create.stock')}}">Entry Stock</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('view.stock')}}">View Stock</a>
-                                </li>
-                               
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+                         
                           <li>
                             <a href="#"><i class="fa fa-laptop nav_icon"></i>Color<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -268,7 +234,103 @@
                                
                             </ul>
                             <!-- /.nav-second-level -->
-                        </li>                        @endif
+                        </li>  
+                                              @endif
+                       
+                        @if(Auth::User()->hasrole('entry'))
+                         <li>
+                            <a href="#"><i class="fa fa-laptop nav_icon"></i>Stocks<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('create.stock')}}">Entry Stock</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('view.stock')}}">View Stock</a>
+                                </li>
+                               
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                           <li>
+                            <a href="#"><i class="fa fa-laptop nav_icon"></i>Product Price<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('get.product')}}">Add Items</a>
+                                </li>
+                               <li>
+                                    <a href="{{route('get.size')}}">Add Size</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('get.product.price')}}">Set Price</a>
+                                </li>
+                               
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                         <li>
+                            <a href="#"><i class="fa fa-laptop nav_icon"></i>Report Generate<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('get.customer.invoice')}}">Customer Report</a>
+                                </li>
+                               <li>
+                                    <a href="{{route('summery.report')}}">Summery Report</a>
+                                </li>
+                                
+                               
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                         
+                          <li>
+                            <a href="#"><i class="fa fa-laptop nav_icon"></i>Color<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('create.color')}}">Color Management</a>
+                                </li>
+                               
+                               
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                         <li>
+                            <a href="#"><i class="fa fa-laptop nav_icon"></i>Token<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('create.token')}}">Token Management</a>
+                                </li>
+                               
+                               
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+<li>
+                            <a href="#"><i class="fa fa-laptop nav_icon"></i>Location <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('create.serial')}}">Location Management</a>
+                                </li>
+                               
+                               
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li> 
+                        <li>
+                            <a href="#"><i class="fa fa-laptop nav_icon"></i>Payment Managment <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('due.list')}}">Due List</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('get.customer')}}">Credit Customer</a>
+                                </li>
+                               
+                               
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>  
+                                              @endif
                        
   
                     </ul>
@@ -278,9 +340,30 @@
     
         </nav>
         <div id="page-wrapper">
-      
+                        @if(Auth::User()->hasrole('admin'))
 
+    @if(Request::is('home'))
+      <div class="col-md-3 widget widget1">
+                <div class="r3_counter_box">
+                    <i class="pull-left fa fa-certificate icon-rounded"></i>
+                    <div class="stats">
+                      <h5><strong>{{$token}}</strong></h5>
+                      <span>Token Left</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 widget widget1">
+                <div class="r3_counter_box">
+                    <i class="pull-left fa fa-key icon-rounded"></i>
+                    <div class="stats">
+                      <h5><strong>{{$rac}}</strong></h5>
+                      <span>Rack Left</span>
+                    </div>
+                </div>
+            </div>
+@endif
 
+@endif
 @yield('content')
     
   

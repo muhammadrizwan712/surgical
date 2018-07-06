@@ -97,6 +97,7 @@
 						Advance :<br>
 						Recieve :<br>
 						Previous : <br>
+						discount : <br>
 						Current:<br>
 					</strong>
 				</p>
@@ -107,7 +108,8 @@
 {{$advance}}Rs<br>
 {{$totalrecieve}}Rs<br>
 {{$previousbalance}}Rs<br>
-{{$currentbalance}}Rs<br>
+{{$discount}}Rs<br>
+{{$currentbalance-$discount}}Rs<br>
 				
 					
 					
